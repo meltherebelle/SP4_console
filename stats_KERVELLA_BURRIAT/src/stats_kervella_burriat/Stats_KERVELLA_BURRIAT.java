@@ -17,7 +17,6 @@ public class Stats_KERVELLA_BURRIAT {
         int [] Face = new int[6];
         for (int i = 0; i < 5; i++) {
             Face[i] = 0;
-            System.out.println(Face[i]);
         }
 
         Scanner sc = new Scanner(System.in);
