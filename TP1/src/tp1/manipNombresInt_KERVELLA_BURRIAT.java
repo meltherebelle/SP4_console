@@ -20,6 +20,8 @@ public class manipNombresInt_KERVELLA_BURRIAT {
         int add;
         int diff;
         int prod;
+        int quot;
+        int reste;
         Scanner sc = new Scanner(System.in);
         System.out.println("Entrez deux valeurs");
         nb1=sc.nextInt();
@@ -29,7 +31,8 @@ public class manipNombresInt_KERVELLA_BURRIAT {
         prod=nb1*nb2;
         System.out.println("Résultat de la somme est : "+add+ "\nRésultat de la différence est : "+ diff+ "\nRésultat du produit : "+prod);
         quot = nb1 / nb2; // division entier
-        mod = nb1 % nb2; // reste de la division euclidienne
+        reste = nb1 % nb2; // reste de la division euclidienne
+        System.out.println("Résultat de la division entière : "+quot+"\nReste de la division euclidienne : "+reste);
     }
     
 }
