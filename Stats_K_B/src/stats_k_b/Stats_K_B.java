@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package stats_kervella_burriat;
+package stats_k_b;
 
 import java.util.Scanner;
 
@@ -10,12 +10,12 @@ import java.util.Scanner;
  *
  * @author leaburriat
  */
-public class Stats_KERVELLA_BURRIAT {
+public class Stats_K_B {
 
     public static void main(String[] args) {
 
         int [] Face = new int[6];
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i <= 5; i++) {
             Face[i] = 0;
         }
 
@@ -26,7 +26,7 @@ public class Stats_KERVELLA_BURRIAT {
         m = sc.nextInt();
 
         for (int i = 0; i < m; i++) {
-            tirage = (int) (Math.random() * (5));
+            tirage = (int) (Math.random() * (6));
             Face[tirage] += 1;
         }
 
