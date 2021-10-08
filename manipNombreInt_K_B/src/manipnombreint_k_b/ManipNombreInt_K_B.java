@@ -1,49 +1,38 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package stats_kervella_burriat;
-
+package manipNombreInt;
 import java.util.Scanner;
-
 /**
  *
  * @author leaburriat
  */
-public class Stats_KERVELLA_BURRIAT {
+public class manipNombresInt_K_B {
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-
-        int [] Face = new int[6];
-        for (int i = 0; i < 5; i++) {
-            Face[i] = 0;
-        }
-
+        // TODO code application logic here
+        int nb1;
+        int nb2;
+        int add;
+        int diff;
+        int prod;
+        int quot;
+        int reste;
         Scanner sc = new Scanner(System.in);
-        int m;
-        int tirage;
-        System.out.println("Saisissez un nombre entier m");
-        m = sc.nextInt();
-
-        for (int i = 0; i < m; i++) {
-            tirage = (int) (Math.random() * (5));
-            Face[tirage] += 1;
-        }
-
-        float Face1, Face2, Face3, Face4, Face5, Face6;
-        Face1 = (Face[0] * 100) / m;
-        Face2 = (Face[1] * 100) / m;
-        Face3 = (Face[2] * 100) / m;
-        Face4 = (Face[3] * 100) / m;
-        Face5 = (Face[4] * 100) / m;
-        Face6 = (Face[5] * 100) / m;
-
-        System.out.println("Pourcentage d'obtention de la face 1 : " + Face1+" %");
-        System.out.println("Pourcentage d'obtention de la face 2 : " + Face2+" %");
-        System.out.println("Pourcentage d'obtention de la face 3 : " + Face3+" %");
-        System.out.println("Pourcentage d'obtention de la face 4 : " + Face4+" %");
-        System.out.println("Pourcentage d'obtention de la face 5 : " + Face5+" %");
-        System.out.println("Pourcentage d'obtention de la face 6 : " + Face6+" %");
-
+        System.out.println("Entrez deux valeurs");
+        nb1=sc.nextInt();
+        nb2=sc.nextInt();
+        add=nb1+nb2;
+        diff=nb1-nb2;
+        prod=nb1*nb2;
+        System.out.println("Résultat de la somme est : "+add+ "\nRésultat de la différence est : "+ diff+ "\nRésultat du produit : "+prod);
+        quot = nb1 / nb2; // division entier
+        reste = nb1 % nb2; // reste de la division euclidienne
+        System.out.println("Résultat de la division entière : "+quot+"\nReste de la division euclidienne : "+reste);
     }
+    
 }
