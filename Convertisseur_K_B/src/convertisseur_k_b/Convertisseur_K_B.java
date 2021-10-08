@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package convertisseur_kervella_burriat;
+package convertisseur_k_b;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author leaburriat
  */
-public class Convertisseur_KERVELLA_BURRIAT {
+public class Convertisseur_K_B {
 
     /**
      * @param args the command line arguments
