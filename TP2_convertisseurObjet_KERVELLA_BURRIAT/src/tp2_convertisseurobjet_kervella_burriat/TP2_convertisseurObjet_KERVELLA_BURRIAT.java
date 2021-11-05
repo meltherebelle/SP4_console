@@ -15,7 +15,7 @@ public class TP2_convertisseurObjet_KERVELLA_BURRIAT {
      */
     public static void main(String[] args) {
         
-        convertisseur convF_C = new convertisseur();
+        Convertisseur objetdetypeconv = new Convertisseur();
        
         double tempC, tempK, tempF, val;
         int choixconv;
