@@ -19,19 +19,7 @@ public class Jeton {
 
     //Méthode : constructeur initialisant la couleur du jeton avec le paramètre
     public Jeton(String Color) {
-        Color = Couleur;
-        
-        //creation tableau contenant les deux couleurs
-        String uneCouleur[] = new String[2];
-        uneCouleur[0] = "Jaune";
-        uneCouleur[1] = "Rouge";
-        
-        //Tirage aléatoire d'une couleur de jeton
-        Random rand = new Random();
-        int i = rand.nextInt(2);
-        Color = uneCouleur[i];
-        ////TEST////
-        System.out.println(Couleur);
+        Couleur = Color ;
         }
 
     //Méthode : renvoie la couleur du jeton

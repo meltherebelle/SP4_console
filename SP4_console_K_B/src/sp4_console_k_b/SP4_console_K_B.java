@@ -5,6 +5,8 @@
 package sp4_console_k_b;
 package Jeton.java;
 
+import java.util.Random;
+
 /**
  *
  * @author leaburriat
@@ -12,6 +14,16 @@ package Jeton.java;
 public class SP4_console_K_B {
 
     public static void main(String[] args) {
+        
+        //TEST : lecture couleur jeton
+        Jeton testjeton = new Jeton("Jaune");
+        System.out.println(testjeton.lireCouleur());
+        
+        //TEST : creation objet joueur
+        Joueur testjoueur = new Joueur();
+        
+        
+        
         
     }
     

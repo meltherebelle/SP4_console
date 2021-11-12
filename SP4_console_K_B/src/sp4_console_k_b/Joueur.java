@@ -14,11 +14,11 @@ public class Joueur {
     String Couleur;
     int Liste_Jetons[ ] = new int[21];
     int nombreDesintegrateurs;
-    int nombreJetonsRestants;
+    int nombreJetonsRestants = 21; //initialement 21, évolue au cours de la partie
     Jeton piece;
     
     
-    public Joueur(String name ){
+    public Joueur(String name){
         name=Nom;
     }
     public void affecterCouleur(String color){
