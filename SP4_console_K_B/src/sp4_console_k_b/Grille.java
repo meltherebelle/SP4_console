@@ -10,5 +10,13 @@ package sp4_console_k_b;
  * @author leaburriat
  */
 public class Grille {
+    Cellule[6][7]CellulesJeu;
     
+    public Grille(){
+        
+    }
+    public boolean ajouterJetonDansColonne(Jeton , int ){
+        
+    }
+            
 }
