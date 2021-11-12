@@ -27,14 +27,18 @@ public class Partie {
     //Constructeur de Partie
     Partie(Joueur,Joueur) {
         
+        // Méthode : crée la grille, crée les jetons et les attribue aux joueurs correspondants
+        //Place les trous noirs (version 2) et les téléporteurs (version 3)
         public void initialiserPartie() {
             
         }
         
+        // Méthode : lance la partie
         public void debuterPartie() {
             
         }
         
+        // Methode : attribue des couleurs aux joueurs
         public void attribuerCouleursAuxJoueurs() {
             
         }
@@ -42,3 +46,7 @@ public class Partie {
     }
     
 }
+
+
+//une partie n’est finalement qu’une grande boucle : à chaque tour un joueur joue, puis l’autre,
+//et on recommence ainsi tant qu’il n’y a pas de joueur gagnant ou que la grille n’est pas remplie.
