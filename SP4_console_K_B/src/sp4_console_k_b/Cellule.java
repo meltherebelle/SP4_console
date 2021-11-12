@@ -10,10 +10,11 @@ package sp4_console_k_b;
  */
 public class Cellule {
 
-    Jeton jetonCourant;
-    boolean trouNoir;
-    boolean desintegrateur;
+    Jeton jetonCourant; //référence vers le jeton occupant la cellule, ou null
+    boolean trouNoir; //indique ou non la présence d’un trou noir
+    boolean desintegrateur; //indique ou non la présence d’un désintégrateur
 
+    // Constructeur : constructeur initialisant les attributs avec des valeurs par défaut
     public Cellule() {
 
     }
