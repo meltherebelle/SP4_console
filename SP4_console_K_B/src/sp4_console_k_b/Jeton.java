@@ -1,6 +1,5 @@
 package sp4_console_k_b;
 
-
 import static java.lang.Math.random;
 import java.util.Random;
 
@@ -16,29 +15,27 @@ import java.util.Random;
 public class Jeton {
     
     //couleur affectée au joueur
-    String couleur;
+    String Couleur;
 
-    public Jeton() {
+    //Méthode : constructeur initialisant la couleur du jeton avec le paramètre
+    public Jeton(String Color) {
+        Color = Couleur;
         
         //creation tableau contenant les deux couleurs
         String uneCouleur[] = new String[2];
         uneCouleur[0] = "Jaune";
         uneCouleur[1] = "Rouge";
         
-        //Méthode : constructeur initialisant la couleur du jeton avec le paramètre
-        Jeton(String couleur) {
-           //Tirage aléatoire d'une couleur de jeton
-           Random rand = new Random();
-           int i = random.nextInt(2);
-           couleur = uneCouleur[i];
-           ////TEST////
-           System.out.println(couleur);
+        //Tirage aléatoire d'une couleur de jeton
+        Random rand = new Random();
+        int i = rand.nextInt(2);
+        Color = uneCouleur[i];
+        ////TEST////
+        System.out.println(Couleur);
         }
 
-        //Méthode : renvoie la couleur du jeton
-        lireCouleur() {
-            return couleur;
-        }
+    //Méthode : renvoie la couleur du jeton
+    public String lireCouleur() {
+        return Couleur;
     }
-    
 }
