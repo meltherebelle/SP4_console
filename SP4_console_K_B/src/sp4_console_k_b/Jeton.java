@@ -14,10 +14,10 @@ import java.util.Random;
  */
 public class Jeton {
     
-    //couleur affectée au joueur
+    //couleur affectée au joueur --> "Jaune" ou "Rouge"
     String Couleur;
 
-    //Méthode : constructeur initialisant la couleur du jeton avec le paramètre
+    //Méthode : constructeur initialisant la couleur du jeton avec le paramètre Color en atttribut
     public Jeton(String Color) {
         Couleur = Color ;
         }
