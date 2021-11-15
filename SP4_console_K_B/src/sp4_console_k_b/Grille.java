@@ -10,7 +10,8 @@ package sp4_console_k_b;
  * @author leaburriat
  */
 public class Grille {
-    Cellule[6][7]CellulesJeu;
+    
+    Cellule CellulesJeu[][] = new Cellule[6][7];
     
     public Grille(){
         
