@@ -12,20 +12,19 @@ package sp4_console_k_b;
 public class Cellule {
 
     Jeton jetonCourant; //référence vers le jeton occupant la cellule, ou null
-    boolean trouNoir; //indique ou non la présence d’un trou noir
-    boolean desintegrateur; //indique ou non la présence d’un désintégrateur
+    //boolean trouNoir; //indique ou non la présence d’un trou noir
+    //boolean desintegrateur; //indique ou non la présence d’un désintégrateur
 
      
     // Constructeur : initialisant les attributs avec des valeurs par défaut
     public Cellule() {
-        
+        jetonCourant = null;
     }
     
     //ajoute le jeton en paramètre à la cellule, et retourne vrai si
     //l’ajout s’est bien passé, sinon faux
-    public Jeton affecterJeton(Jeton unjeton) {
-        jetonCourant = unjeton;
-        if (jetonCourant == 0) {
+    public boolean affecterJeton(Jeton unjeton) {
+        if (jetonCourant == null) {
             jetonCourant = unjeton;
             return true; //jeton bien affecté à la cellule du jetonCourant
             }
@@ -89,15 +88,24 @@ public class Cellule {
     //renvoie la couleur du jeton occupant la cellule, ou
     //renvoie le mot « vide » si aucun jeton n’est présent.
     public String lireCouleurDuJeton(){
-        
+        if (jetonCourant == null) {
+            return "Cellule vide";
+        }
+        else {
+            return jetonCourant.Couleur;
+        }
     }
+    
+    /*//supprime le désintégrateur présent de la cellule,
+    //et renvoie vrai, ou faux sinon (exemple : pas de désintégrateur présent)
     public boolean recupererDesintegrateur(){
         
-    }
+    }*/
+    
+    /*//active le trou noir : le trou noir engloutit le jeton et disparait.
+    //Retourne vrai si tout s’est correctement déroulé, ou faux sinon (pas de trou noir)
     public boolean activerTrouNoir(){
         
-    }
-    public boolean affecterJeton(Jeton) {
-
-    }
+    }*/
+    
 }
