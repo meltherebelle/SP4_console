@@ -18,21 +18,41 @@ import java.util.Scanner;
 
 public class Partie {
     
-    //ListeJoueurs : tableau des deux joueurs de la partie
+    //création ListeJoueurs : tableau des deux joueurs de la partie
     Joueur [] ListeJoueurs = new Joueur[2];
     
-    //joueurCourant : désigne le joueur courant à tout moment de la partie
+    //création joueurCourant : désigne le joueur courant à tout moment de la partie
     Joueur joueurCourant;
     
-    //grilleJeu : désigne la grille de jeu. C’est sans doute l’objet le plus important de ce projet.
+    //création grilleJeu : désigne la grille de jeu - sans doute l’objet le plus important de ce projet.
     //Tout y est fait : ajout de jetons, et vérification de la grille
     Grille grilleJeu = new Grille();
         
+    // Méthode : attribution aléatoire des couleurs aux joueurs
+    public void attribuerCouleursAuxJoueurs() {
+        //creation tableau contenant les deux couleurs
+        String uneCouleur[] = new String[2];
+        uneCouleur[0] = "Jaune";
+        uneCouleur[1] = "Rouge";
+        //Tirage aléatoire d'une couleur de jeton
+        String Couleurjoueur1 = "";
+        Random rand = new Random();
+        int i = rand.nextInt(2);
+        joueur1.Jeton1(uneCouleur[i]); //on attribu cette 1ere couleur aléatoire au joueur1
+        int a;
+        if (i == 0) {
+            a = 1;
+        }
+        else {
+            a = 0;
+        }
+        joueur2.Jeton2(uneCouleur[a]); //on attribu l'autre couleur au joueur2
+    }
+
     // Méthode : créé la grille, créé les jetons et les attribue aux joueurs correspondants
     //Place les trous noirs (version 2) et les téléporteurs (version 3)
     public void initialiserPartie() {
         grilleJeu.viderGrille(); //creation de la grille
-        grilleJeu.afficherGrilleSurConsole(); //affichage grille sur console
         
         //affectation des noms aux joueurs
         Scanner sc = new Scanner(System.in);
@@ -47,54 +67,75 @@ public class Partie {
         
         //attribution des couleurs aux joueurs
         attribuerCouleursAuxJoueurs();
-        System.out.println(joueur1+" possède les jetons de couleur "+Joueur1.Couleur);
-        System.out.println(joueur2+" possède les jetons de couleur "+Joueur2.Couleur);
+        System.out.println(joueur1+" possède les jetons de couleur "+joueur1.Couleur);
+        System.out.println(joueur2+" possède les jetons de couleur "+joueur2.Couleur);
        
         //creation des jetons & attribution des jetons correpondants aux joueurs
-        for (int i = 0, i < 21, i++) {
-            Jeton unJeton = new Jeton(joueur1.couleur); //creation jetons joueur1
-            joueur1.ajouterJeton(unJeton);
-            Jeton unJeton = new Jeton(joueur2.couleur); //creation jetons joueur2
-            joueur2.ajouterJeton(unJeton);
+        for (int i = 0; i < 20; i++) {
+            Jeton unJeton1 = new Jeton(joueur1.Couleur); //creation jetons joueur1
+            joueur1.ajouterJeton(unJeton1);
+            Jeton unJeton2 = new Jeton(joueur2.Couleur); //creation jetons joueur2
+            joueur2.ajouterJeton(unJeton2);
         }
         
-        // FAIRE : définition aléatoire du joueur qui commence à jouer ??
+        //Définition aléatoire du joueur qui commence à jouer
+        Random rand = new Random(); // définition aléatoire du joueur qui commence à jouer
+        boolean premier;
+        premier = rand.nextBoolean(); //affectation aléatoire du premier joueur
+        if (premier == true){
+            System.out.println(joueur1.Nom + " commence à jouer. ");
+            joueurCourant = joueur1; //affectation du joueur courant
+        }
+        else {
+            System.out.println(joueur2.Nom + " commence à jouer. ");
+            joueurCourant = joueur2; //affectation du joueur courant
+        }
         
         //placement des trous noirs (v.2)
         //placement des téléporteurs (v.3)
         
-//METHODE A FINIR
+        grilleJeu.afficherGrilleSurConsole(); //affichage grille sur console
+        System.out.println("La partie va commencer !\nVous pouvez placer un jeton. ");
     }
 
-    // Méthode : lance la partie
-    public void debuterPartie() {
-        initialiserPartie(); //tout d'abord, on initalise la partie (préparation grille & joueurs)
-        
-    }
-
-// TESTER CETTE MÉTHODE --> L'ATTRIBUTION ALÉATOIRE DE COULEUR OK OU PAS OK ?
-    // Methode : attribue des couleurs aux joueurs
-    public void attribuerCouleursAuxJoueurs() {
-        
-        //creation tableau contenant les deux couleurs
-        String uneCouleur[] = new String[2];
-        uneCouleur[0] = "Jaune";
-        uneCouleur[1] = "Rouge";
-        
-        //Tirage aléatoire d'une couleur de jeton
-        String Couleurjoueur1 = "";
-        Random rand = new Random();
-        int i = rand.nextInt(2);
-        joueur1.Jeton(uneCouleur[i]); //on attribu cette 1ere couleur aléatoire au joueur1
-        int a;
-        if (i == 0) {
-            a = 1;
+    public void jouerJeton() {
+        //Choix colonne
+        int choixCol = 0; //initilisation variable choix de colonne entrée par joueur
+        Scanner sc = new Scanner(System.in); //joueur entre la colonne voulue
+        System.out.println("Entrez une colonne où vous voulez placer votre jeton. ");
+        choixCol = sc.nextInt() -1 ; //on retire 1 au choix de la colonne car l'indice column du tableau est de 0 à 6 (or le joueur pense que les colonnes sont de 1 à 7)
+        if (0 < choixCol || choixCol > 7) {
+            System.out.println("Attention : Choisissez une colonne entre 1 et 7. ")
         }
         else {
-            a = 0;
+            //pkacer jeton en fonction de la col choisie
         }
-        joueur2.Jeton(uneCouleur[a]); //on attribu l'autre couleur au joueur2
+    }
+    
+    
+    // Méthode : Lancement de la partie
+    public void debuterPartie() {
+        initialiserPartie(); //création du plateau
         
+        //Boucle d'une partie
+        for (int i=0; i<42; i++) { //dans tous les cas la partie se termine lorsque les 42 cellules sont remplies
+            //voir ci-dessus --> création de la méthode jouerJeton()
+            jouerJeton();
+            System.out.println("jouerJeton() enclenchée");
+        }*/
+
+        //au tour du joueur gagnant de jouer
+        System.out.println("Tour de " + joueurCourant.Nom);
+        grilleJeu.etreGagnantePourJoueur(joueurCourant);
+        
+        //détection du joueur gagnant à chaque partie
+        if (grilleJeu.etreGagnantePourJoueur(joueurCourant)==true) {
+            System.out.println(joueurCourant.Nom + " a gagné la partie! ");
+        }
+        //joueur courant a perdu la partie
+        else {
+            System.out.println("Dommage, "+joueurCourant.Nom + " a perdu la partie... ");
+        }
     }
     
 }
