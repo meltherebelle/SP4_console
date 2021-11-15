@@ -25,27 +25,26 @@ public class Cellule {
     //l’ajout s’est bien passé, sinon faux
     public Jeton affecterJeton(Jeton unjeton) {
         jetonCourant = unjeton;
-        if (CellulesJeu[line][column].jetonCourant != jetonCourant) {
-            CellulesJeu[line][column].jetonCourant = unjeton;
-            return true;
+        if (jetonCourant == 0) {
+            jetonCourant = unjeton;
+            return true; //jeton bien affecté à la cellule du jetonCourant
             }
         else {
-            return false; //jeton déjà présent
+            return false; //jetonCourant déjà présent sur la cellule
             }
         }
 
     //renvoie une référence vers le jeton de la cellule
     public Jeton recupererJeton(){
-        jetonCourant = CellulesJeu[line][column];
-        return jetonCourant;
+        return jetonCourant; //renvoie la réf du jetonCourant
     }
     
     
     //supprime le jeton et renvoie vrai si la suppression s’est bien
     //passée, ou faux autrement (ex : pas de jeton présent)
     public boolean supprimerJeton() {
-        if (CellulesJeu[line][column].jetonCourant == jetonCourant) {
-            CellulesJeu[line][column].jetonCourant -= jetonCourant;
+        if (jetonCourant == jetonCourant) {
+            jetonCourant = null ; //on supprime le jetonCourant placé dans la cellule
             return true; //la suppression s'est bien passée
         }
         else {
@@ -55,39 +54,39 @@ public class Cellule {
 
     //ajoute un trou noir à l’endroit indiqué et retourne vrai si
     //l’ajout s’est bien passé, ou faux sinon (exemple : trou noir déjà présent)
-    public boolean placerTrouNoir() {
-        if (CellulesJeu[line][column].jetonCourant != trouNoir) {
-            CellulesJeu[line][column].jetonCourant = trouNoir;
+    /* public boolean placerTrouNoir() {
+        if (trouNoir.jetonCourant == 0) {
+            trouNoir.jetonCourant = 1 ;
             return true; //ajout d'un trouNoir
         }
         else {
             return false; //trou noir déjà présent
         }
-    }
+    } */
     
     //ajoute un désintégrateur à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé,
     //ou faux sinon (exemple : désintégrateur déjà présent)
-    public boolean placerDesintegrateur(){
-        if (CellulesJeu[line][column].jetonCourant != desintegrateur) {
-            CellulesJeu[line][column].jetonCourant = desintegrateur;
+    /* public boolean placerDesintegrateur(){
+        if (desintegrateur.jetonCourant == 0 ) {
+            desintegrateur.jetonCourant = 1 ;
             return true; //désintégrateur placé
         }
         else {
             return false;
         }
-    }
+    } */
     
     //renvoie vrai si un trou noir est présent sur la cellule
-    public boolean presenceTrouNoir(){
-        //if () {
-            return true;
-        //}
-        //else {
-          //  return false;
-        //}
-    }
+    /* public boolean presenceTrouNoir(){
+        if (jetonCourant == trouNoir) {
+            return true; //il y a un trouNoir sur la cellule
+        }
+        else {
+            return false;
+        }
+    } */
     
-    // renvoie la couleur du jeton occupant la cellule, ou
+    //renvoie la couleur du jeton occupant la cellule, ou
     //renvoie le mot « vide » si aucun jeton n’est présent.
     public String lireCouleurDuJeton(){
         
