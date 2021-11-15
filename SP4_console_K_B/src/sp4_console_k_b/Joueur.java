@@ -21,17 +21,20 @@ public class Joueur {
     
     //constructeur initialisant le nom du joueur avec son paramètre
     public Joueur(String name){
+        System.out.println("Initialisation du nom du joueur. ");
         Nom = name;
     }
     
     //affecte la couleur en paramètre au joueur
     public void affecterCouleur(String Color){
+        System.out.println("Affectation de la couleur au joueur. ");
         Couleur = Color;
     }
     
     //ajoute le jeton passé en paramètre à la liste des jetons
     public boolean ajouterJeton(Jeton unJeton){
-        Liste_Jetons[nombreJetonsRestants++] = unJeton; //ajoute un jeton à la Liste_Jetons
+        Liste_Jetons[nombreJetonsRestants++] = unJeton; //ajoute d'un jeton à la Liste_Jetons
+        System.out.println("Un jeton a été ajouté à la Liste de Jetons. ");
         return false;
     }
     
