@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sp4_console_k_b;
-package
+package Jeton.java;
 
 /**
  *
@@ -14,16 +14,14 @@ public class Joueur {
     
     String Nom;
     String Couleur;
-    int Liste_Jetons[ ] = new int[21]; //creation d'un tableau du type Jeton contenant 21 jetons
+    Jeton Liste_Jetons[ ] = new Jeton[21]; //creation d'un tableau du type Jeton contenant 21 jetons
     int nombreDesintegrateurs;
-    int nombreJetonsRestants = 21; //initialement 21 jetons, évolue au cours de la partie
+    int nombreJetonsRestants = 21; //initialement 21 jetons, évolue au cours de la partie (taille effective Liste_Jetons)
     Jeton piece;
     
     //constructeur initialisant le nom du joueur avec son paramètre
     public Joueur(String name){
         Nom = name;
-        //nombreDesintegrateurs = 0;
-        //nombreJetonsRestants = 0;
     }
     
     //affecte la couleur en paramètre au joueur
@@ -31,10 +29,10 @@ public class Joueur {
         Couleur = Color;
     }
     
-// COMPLETER CETTE MÉTHODE //
     //ajoute le jeton passé en paramètre à la liste des jetons
-    public boolean ajouterJeton(Jeton){
-        //Liste_Jetons[nombreJetonsRestants++] = unJeton;
+    public boolean ajouterJeton(Jeton unJeton){
+        Liste_Jetons[nombreJetonsRestants++] = unJeton; //ajoute un jeton à la Liste_Jetons
+        return false;
     }
     
     //incrémente le nombre de désintégrateurs du joueur
@@ -56,6 +54,5 @@ public class Joueur {
             return false;
             }
         }
-        
+       
     }
-}
