@@ -26,15 +26,18 @@ public class Cellule {
     public boolean affecterJeton(Jeton unjeton) {
         if (jetonCourant == null) {
             jetonCourant = unjeton;
-            return true; //jeton bien affecté à la cellule du jetonCourant
+            System.out.println("Le jeton courant est bien affecté à la cellule");
+            return true;
             }
         else {
-            return false; //jetonCourant déjà présent sur la cellule
+            System.out.println("Le jeton courant est déjà présent sur la cellule");
+            return false;
             }
         }
 
     //renvoie une référence vers le jeton de la cellule
     public Jeton recupererJeton(){
+        System.out.println("La référence du jeton courant a bien été récupérée et renvoyé. ");
         return jetonCourant; //renvoie la réf du jetonCourant
     }
     
@@ -44,10 +47,12 @@ public class Cellule {
     public boolean supprimerJeton() {
         if (jetonCourant == jetonCourant) {
             jetonCourant = null ; //on supprime le jetonCourant placé dans la cellule
-            return true; //la suppression s'est bien passée
+            System.out.println("La suppression s'est bien passée");
+            return true;
         }
         else {
-            return false; //pas de jeton présent sur la cellule
+            System.out.println("Pas de jeton présent sur la cellule");
+            return false;
         }
     }
 
@@ -89,9 +94,10 @@ public class Cellule {
     //renvoie le mot « vide » si aucun jeton n’est présent.
     public String lireCouleurDuJeton(){
         if (jetonCourant == null) {
-            return "Cellule vide";
+            return "La cellule est vide. ";
         }
         else {
+            System.out.println("La couleur du jeton courant est : "+jetonCourant.Couleur);
             return jetonCourant.Couleur;
         }
     }
