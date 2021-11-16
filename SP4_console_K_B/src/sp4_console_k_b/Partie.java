@@ -28,6 +28,7 @@ public class Partie {
     //Tout y est fait : ajout de jetons, et vérification de la grille
     Grille grilleJeu = new Grille();
         
+    
     // Méthode : attribution aléatoire des couleurs aux joueurs
     public void attribuerCouleursAuxJoueurs() {
         //creation tableau contenant les deux couleurs
@@ -35,10 +36,9 @@ public class Partie {
         uneCouleur[0] = "Jaune";
         uneCouleur[1] = "Rouge";
         //Tirage aléatoire d'une couleur de jeton
-        String Couleurjoueur1 = "";
         Random rand = new Random();
         int i = rand.nextInt(2);
-        joueur1.Jeton1(uneCouleur[i]); //on attribu cette 1ere couleur aléatoire au joueur1
+        ListeJoueurs[0].Couleur = uneCouleur[i]; //on attribu cette 1ere couleur aléatoire au joueur1
         int a;
         if (i == 0) {
             a = 1;
@@ -46,9 +46,20 @@ public class Partie {
         else {
             a = 0;
         }
-        joueur2.Jeton2(uneCouleur[a]); //on attribu l'autre couleur au joueur2
+        ListeJoueurs[1].Couleur = uneCouleur[a]; //on attribu l'autre couleur au joueur2
     }
 
+    // Méthode : changer de joueur - tour du suivant
+    public void JoueurSuivant() {
+        if (joueurCourant == ListeJoueurs[1]){
+            joueurCourant = ListeJoueurs[0];
+        }
+        else {
+            joueurCourant = ListeJoueurs[1];
+        }
+    }
+    
+    
     // Méthode : créé la grille, créé les jetons et les attribue aux joueurs correspondants
     //Place les trous noirs (version 2) et les téléporteurs (version 3)
     public void initialiserPartie() {
@@ -100,44 +111,50 @@ public class Partie {
 
     public void jouerJeton() {
         //Choix colonne
-        int choixCol = 0; //initilisation variable choix de colonne entrée par joueur
+        int ChoixCol = 0; //initilisation variable choix de colonne entrée par joueur
         Scanner sc = new Scanner(System.in); //joueur entre la colonne voulue
         System.out.println("Entrez une colonne où vous voulez placer votre jeton. ");
-        choixCol = sc.nextInt() -1 ; //on retire 1 au choix de la colonne car l'indice column du tableau est de 0 à 6 (or le joueur pense que les colonnes sont de 1 à 7)
-        if (0 < choixCol || choixCol > 7) {
+        ChoixCol = sc.nextInt() -1 ; //on retire 1 au choix de la colonne car l'indice column du tableau est de 0 à 6 (or le joueur pense que les colonnes sont de 1 à 7)
+        while (0 < ChoixCol || ChoixCol > 7) {
             System.out.println("Attention : Choisissez une colonne entre 1 et 7. ")
+            ChoixCol = sc.nextInt() -1; //le joueur entre à nouveau une colonne
         }
-        else {
-            //pkacer jeton en fonction de la col choisie
+        if (grilleJeu.colonneRemplie(ChoixCol)==true) {
+            //La colonne est déjà remplie
+            ChoixCol = sc.nextInt() - 1;
+            System.out.println("Erreur : Colonne déjà remplie - Choisissez une autre colonne");
+        }
+        else { //REVOIR ICI :
+            Jeton JetonCourant = joueurCourant.enleverJeton(); //on retire le jeton courant au joueur (-1)
+            grilleJeu.ajouterJetonDansColonne(JetonCourant, ChoixCol); //On ajoute le Jeton dans la colonne choisie sur la grille
+            System.out.println("Le jeton a bien été placé dans la colonne : "+ChoixCol);
         }
     }
-    
     
     // Méthode : Lancement de la partie
     public void debuterPartie() {
         initialiserPartie(); //création du plateau
         
         //Boucle d'une partie
-        for (int i=0; i<42; i++) { //dans tous les cas la partie se termine lorsque les 42 cellules sont remplies
-            //voir ci-dessus --> création de la méthode jouerJeton()
+        for (int i=0; i<42; i++) { //dans tous les cas, la partie se termine lorsque les 42 cellules sont remplies (cas le plus long)
+            //dans la version 1 --> 1 seule option : jouer un jeton
             jouerJeton();
-            System.out.println("jouerJeton() enclenchée");
-        }*/
 
-        //au tour du joueur gagnant de jouer
-        System.out.println("Tour de " + joueurCourant.Nom);
-        grilleJeu.etreGagnantePourJoueur(joueurCourant);
-        
-        //détection du joueur gagnant à chaque partie
-        if (grilleJeu.etreGagnantePourJoueur(joueurCourant)==true) {
-            System.out.println(joueurCourant.Nom + " a gagné la partie! ");
-        }
-        //joueur courant a perdu la partie
-        else {
-            System.out.println("Dommage, "+joueurCourant.Nom + " a perdu la partie... ");
+            //au tour du joueur gagnant de jouer
+            grilleJeu.etreGagnantePourJoueur(joueurCourant);
+            System.out.println("Au tour de " + joueurCourant.Nom);
+
+            //détection du joueur gagnant à chaque partie
+            if (grilleJeu.etreGagnantePourJoueur(joueurCourant)==true) {
+                System.out.println(joueurCourant.Nom + " a gagné la partie! ");
+            }
+            //on continue la partie
+            else {
+                JoueurSuivant(); //on passe au joueur suivant
+            }
+            i++;
         }
     }
-    
 }
 
 

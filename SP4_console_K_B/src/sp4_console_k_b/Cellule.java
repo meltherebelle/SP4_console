@@ -19,6 +19,8 @@ public class Cellule {
     // Constructeur : initialisant les attributs avec des valeurs par défaut
     public Cellule() {
         jetonCourant = null;
+        //trouNoir = false;
+        //desintegrateur = false;
     }
     
     //ajoute le jeton en paramètre à la cellule, et retourne vrai si
